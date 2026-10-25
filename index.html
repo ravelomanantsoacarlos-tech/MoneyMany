@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101820">
+  <title>MoneyMany - Micro-tâches</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: Arial, sans-serif;
+      background: #101820; color: #f5f7fa;
+    }
+    header {
+      background: #17232d; padding: 20px;
+      border-bottom: 2px solid #35c879;
+    }
+    .logo { font-size: 27px; font-weight: bold; color: #35c879; }
+    .top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+    button, select {
+      padding: 10px 14px; border-radius: 9px;
+      border: 1px solid #40505d; background: #243440;
+      color: white; font-size: 15px;
+    }
+    button { cursor:pointer; }
+    main { max-width: 850px; margin: auto; padding: 18px; }
+    .hero, .card {
+      background: #1a2935; padding: 20px;
+      border-radius: 15px; margin: 16px 0;
+      border: 1px solid #334653;
+    }
+    h1 { font-size: 29px; }
+    h2 { font-size: 21px; }
+    .green { color: #35c879; }
+    .balance { font-size: 30px; font-weight: bold; }
+    .tasks { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+    .task { background:#213441; padding:16px; border-radius:12px; }
+    .primary { background:#16834a; border:0; font-weight:bold; }
+    .note { color:#bdc8d1; font-size:13px; line-height:1.5; }
+    footer { text-align:center; color:#aebbc5; padding:24px; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="logo">MoneyMany</div>
+    <select id="language" aria-label="Langue" onchange="changeLanguage()">
+      <option value="fr">🇫🇷 Français</option>
+      <option value="mg">🇲🇬 Malagasy</option>
+    </select>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1 id="welcome">Gagnez en réalisant des micro-tâches !</h1>
+    <p id="intro">Une plateforme simple pour découvrir des missions en ligne.</p>
+    <button class="primary" onclick="showTasks()" id="explore">Découvrir les missions</button>
+  </section>
+
+  <section class="card">
+    <h2 id="balanceTitle">Mon portefeuille</h2>
+    <div class="balance">0 Ar</div>
+    <p class="note" id="balanceNote">Solde de démonstration : aucun paiement réel n'est effectué.</p>
+  </section>
+
+  <section>
+    <h2 id="tasksTitle">Missions disponibles</h2>
+    <div class="tasks" id="tasks">
+      <article class="task">
+        <h3 id="task1">Découvrir la plateforme</h3>
+        <p id="desc1">Consultez les informations de MoneyMany.</p>
+        <p class="green" id="reward1">Récompense : démo</p>
+        <button onclick="demoMessage()" id="start1">Voir la mission</button>
+      </article>
+      <article class="task">
+        <h3 id="task2">Lire les consignes</h3>
+        <p id="desc2">Apprenez comment fonctionnent les missions.</p>
+        <p class="green" id="reward2">Récompense : démo</p>
+        <button onclick="demoMessage()" id="start2">Voir la mission</button>
+      </article>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 id="aboutTitle">À propos de MoneyMany</h2>
+    <p id="aboutText">MoneyMany est en cours de création. Les missions et les paiements réels ne sont pas encore activés.</p>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 MoneyMany</p>
+  <p class="note" id="footerNote">Version initiale bilingue — démonstration uniquement.</p>
+</footer>
+
+<script>
+const translations = {
+  fr: {
+    welcome:"Gagnez en réalisant des micro-tâches !",
+    intro:"Une plateforme simple pour découvrir des missions en ligne.",
+    explore:"Découvrir les missions", balanceTitle:"Mon portefeuille",
+    balanceNote:"Solde de démonstration : aucun paiement réel n'est effectué.",
+    tasksTitle:"Missions disponibles", task1:"Découvrir la plateforme",
+    desc1:"Consultez les informations de MoneyMany.",
+    reward1:"Récompense : démo", task2:"Lire les consignes",
+    desc2:"Apprenez comment fonctionnent les missions.",
+    reward2:"Récompense : démo", start1:"Voir la mission",
+    start2:"Voir la mission", aboutTitle:"À propos de MoneyMany",
+    aboutText:"MoneyMany est en cours de création. Les missions et les paiements réels ne sont pas encore activés.",
+    footerNote:"Version initiale bilingue — démonstration uniquement.",
+    message:"Cette mission est un exemple. Les missions rémunérées ne sont pas encore activées."
+  },
+  mg: {
+    welcome:"Mahazoa valisoa amin'ny asa madinika an-tserasera!",
+    intro:"Sehatra tsotra hahitana asa azo atao amin'ny Internet.",
+    explore:"Hijery ny asa", balanceTitle:"Ny volako",
+    balanceNote:"Vola andrana ihany ity. Tsy misy fandoavam-bola tena izy.",
+    tasksTitle:"Asa azo jerena", task1:"Hijery ny sehatra",
+    desc1:"Jereo ny mombamomba ny MoneyMany.",
+    reward1:"Valisoa: andrana", task2:"Hamaky toromarika",
+    desc2:"Ianaro ny fomba fiasan'ny asa.",
+    reward2:"Valisoa: andrana", start1:"Hijery ny asa",
+    start2:"Hijery ny asa", aboutTitle:"Momba ny MoneyMany",
+    aboutText:"Mbola amboarina ny MoneyMany. Tsy mbola mandeha ny asa misy karama sy ny fandoavam-bola tena izy.",
+    footerNote:"Dika voalohany amin'ny teny roa — andrana ihany.",
+    message:"Ohatra ihany ity asa ity. Tsy mbola mandeha ny asa misy karama."
+  }
+};
+
+function changeLanguage() {
+  const lang = document.getElementById("language").value;
+  document.documentElement.lang = lang;
+  for (const id in translations[lang]) {
+    if (id !== "message") {
+      document.getElementById(id).textContent = translations[lang][id];
+    }
+  }
+}
+function showTasks() {
+  document.getElementById("tasksTitle").scrollIntoView({behavior:"smooth"});
+}
+function demoMessage() {
+  alert(translations[document.getElementById("language").value].message);
+}
+</script>
+</body>
+</html>
