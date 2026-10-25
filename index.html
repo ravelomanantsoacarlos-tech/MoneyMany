@@ -1,148 +1,148 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101820">
-  <title>MoneyMany - Micro-tâches</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; font-family: Arial, sans-serif;
-      background: #101820; color: #f5f7fa;
-    }
-    header {
-      background: #17232d; padding: 20px;
-      border-bottom: 2px solid #35c879;
-    }
-    .logo { font-size: 27px; font-weight: bold; color: #35c879; }
-    .top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
-    button, select {
-      padding: 10px 14px; border-radius: 9px;
-      border: 1px solid #40505d; background: #243440;
-      color: white; font-size: 15px;
-    }
-    button { cursor:pointer; }
-    main { max-width: 850px; margin: auto; padding: 18px; }
-    .hero, .card {
-      background: #1a2935; padding: 20px;
-      border-radius: 15px; margin: 16px 0;
-      border: 1px solid #334653;
-    }
-    h1 { font-size: 29px; }
-    h2 { font-size: 21px; }
-    .green { color: #35c879; }
-    .balance { font-size: 30px; font-weight: bold; }
-    .tasks { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
-    .task { background:#213441; padding:16px; border-radius:12px; }
-    .primary { background:#16834a; border:0; font-weight:bold; }
-    .note { color:#bdc8d1; font-size:13px; line-height:1.5; }
-    footer { text-align:center; color:#aebbc5; padding:24px; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>MoneyMany — Missions & VIP</title>
+<style>
+:root{--bg:#0b1220;--panel:#121d2d;--panel2:#18263a;--line:#293950;--text:#f4f7fb;--muted:#aab8ca;--green:#35d07f;--green2:#159957;--gold:#ffd166;--danger:#ff9b9b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#15283a 0,#0b1220 52%);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:1100px;margin:auto;padding:18px}
+header{position:sticky;top:0;z-index:10;background:#0b1220ee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.head{max-width:1100px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-size:1.25rem;font-weight:850;letter-spacing:-.5px}.mark{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--green),#0d8550);color:#062416;font-weight:950}
+.brand span{color:var(--green)}.headright{display:flex;gap:8px;align-items:center}select,.field{background:#0e1928;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px;width:100%}
+.lang{width:auto}.btn{border:1px solid var(--line);border-radius:11px;padding:10px 14px;color:var(--text);background:var(--panel2);font-weight:700}.btn.primary{background:var(--green);color:#052416;border-color:var(--green)}.btn:focus,input:focus,select:focus{outline:2px solid #35d07f88;outline-offset:2px}
+.hero{padding:32px 0 18px;display:grid;grid-template-columns:1.5fr 1fr;gap:16px;align-items:stretch}.eyebrow{color:var(--green);font-weight:800;text-transform:uppercase;font-size:.76rem;letter-spacing:1.5px}
+h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.08;letter-spacing:-1.5px;margin:10px 0 14px}h2{font-size:1.25rem;margin:0 0 14px}h3{font-size:1rem;margin:0 0 6px}.muted{color:var(--muted)}.hero p{max-width:620px}.panel{background:linear-gradient(145deg,#162438,#101a29);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 12px 36px #0002}
+.balance{font-size:2rem;font-weight:850;letter-spacing:-1px;margin:4px 0}.small{font-size:.84rem;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0 24px}.stat{background:#111d2c;border:1px solid var(--line);border-radius:14px;padding:15px}.stat strong{display:block;font-size:1.15rem}.stat span{font-size:.82rem;color:var(--muted)}
+.section{margin:26px 0}.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:14px}.sectionhead p{margin:0}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.vip{position:relative;background:linear-gradient(155deg,#17263a,#101a29);border:1px solid var(--line);border-radius:16px;padding:17px;display:flex;flex-direction:column;gap:9px}.vip.featured{border-color:#35d07f99;box-shadow:inset 0 0 0 1px #35d07f22}.tag{display:inline-flex;align-self:flex-start;padding:4px 9px;border-radius:999px;background:#173c2b;color:var(--green);font-size:.75rem;font-weight:800}.price{font-size:1.45rem;font-weight:850}.vip ul{padding-left:18px;margin:0;color:var(--muted);font-size:.9rem;flex:1}.vip .btn{margin-top:5px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formgrid{display:grid;gap:12px}.label{display:block;font-size:.9rem;font-weight:700;margin-bottom:5px}.payrow{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#0d1826;border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0}.payrow strong{display:block}.payrow .number{font-size:1.08rem;letter-spacing:.4px}.status{padding:10px 12px;border-radius:10px;background:#302718;color:#ffe0a0;border:1px solid #6b542a;font-size:.88rem;display:none;margin-top:12px}.mission{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.mission:last-child{border-bottom:0}.pill{font-size:.78rem;border:1px solid var(--line);padding:5px 8px;border-radius:999px;color:var(--muted);white-space:nowrap}
+.notice{border:1px solid #66532a;background:#2a2418;color:#f4dca7;border-radius:13px;padding:14px;font-size:.9rem}.footer{padding:25px 0 45px;text-align:center;color:var(--muted);font-size:.83rem}
+@media(max-width:760px){.hero,.two{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}.wrap{padding:14px}.head{padding:12px 14px}}
+@media(max-width:460px){.grid{grid-template-columns:1fr}.brand{font-size:1.05rem}.mark{width:34px;height:34px}.headright .btn{display:none}.hero{padding-top:22px}.sectionhead{align-items:start;flex-direction:column}}
+</style>
 </head>
 <body>
-<header>
-  <div class="top">
-    <div class="logo">MoneyMany</div>
-    <select id="language" aria-label="Langue" onchange="changeLanguage()">
-      <option value="fr">🇫🇷 Français</option>
-      <option value="mg">🇲🇬 Malagasy</option>
-    </select>
-  </div>
-</header>
+<header><div class="head">
+  <div class="brand"><div class="mark">M</div><div>Money<span>Many</span></div></div>
+  <div class="headright"><select class="lang" id="lang" aria-label="Language"><option value="fr">🇫🇷 Français</option><option value="mg">🇲🇬 Malagasy</option></select><button class="btn" id="navVip" onclick="document.getElementById('vipSection').scrollIntoView({behavior:'smooth'})">Découvrir VIP</button></div>
+</div></header>
+<main class="wrap">
+<section class="hero">
+  <div><div class="eyebrow" data-i18n="eyebrow">Plateforme de missions</div><h1 data-i18n="heroTitle">Des missions utiles. Une expérience plus simple.</h1><p class="muted" data-i18n="heroText">Explorez les missions disponibles, suivez votre activité et découvrez les options d’accès VIP de MoneyMany.</p><button class="btn primary" onclick="document.getElementById('missionSection').scrollIntoView({behavior:'smooth'})" data-i18n="browse">Explorer les missions</button></div>
+  <div class="panel"><div class="small" data-i18n="walletLabel">Portefeuille de démonstration</div><div class="balance">0 Ar</div><div class="small" data-i18n="walletHint">Aucun dépôt ni revenu réel n’est enregistré sur cette version.</div><hr style="border:0;border-top:1px solid var(--line);margin:18px 0"><div class="small" data-i18n="currentVip">Niveau actuel</div><strong data-i18n="noVip">Aucun VIP activé</strong><div style="margin-top:14px"><button class="btn" onclick="document.getElementById('depositSection').scrollIntoView({behavior:'smooth'})" data-i18n="depositBtn">Instructions de dépôt</button></div></div>
+</section>
+<section class="stats">
+  <div class="stat"><strong>10</strong><span data-i18n="statVip">Niveaux VIP proposés</span></div>
+  <div class="stat"><strong>MG / FR</strong><span data-i18n="statLang">Deux langues disponibles</span></div>
+  <div class="stat"><strong data-i18n="demoStatus">Démo</strong><span data-i18n="statStatus">Paiements non connectés</span></div>
+</section>
+<section class="section" id="vipSection">
+ <div class="sectionhead"><div><div class="eyebrow" data-i18n="memberArea">Espace membre</div><h2 data-i18n="vipTitle">Choisissez votre niveau VIP</h2><p class="muted" data-i18n="vipIntro">Chaque niveau donne accès à des fonctionnalités et à des catégories de missions supplémentaires.</p></div></div>
+ <div class="grid" id="vipGrid"></div>
+ <p class="small" data-i18n="vipDisclaimer">Tarifs proposés à titre de maquette. Vérifiez les avantages réels, les conditions et les obligations légales avant de facturer un accès.</p>
+</section>
 
-<main>
-  <section class="hero">
-    <h1 id="welcome">Gagnez en réalisant des micro-tâches !</h1>
-    <p id="intro">Une plateforme simple pour découvrir des missions en ligne.</p>
-    <button class="primary" onclick="showTasks()" id="explore">Découvrir les missions</button>
-  </section>
-
-  <section class="card">
-    <h2 id="balanceTitle">Mon portefeuille</h2>
-    <div class="balance">0 Ar</div>
-    <p class="note" id="balanceNote">Solde de démonstration : aucun paiement réel n'est effectué.</p>
-  </section>
-
-  <section>
-    <h2 id="tasksTitle">Missions disponibles</h2>
-    <div class="tasks" id="tasks">
-      <article class="task">
-        <h3 id="task1">Découvrir la plateforme</h3>
-        <p id="desc1">Consultez les informations de MoneyMany.</p>
-        <p class="green" id="reward1">Récompense : démo</p>
-        <button onclick="demoMessage()" id="start1">Voir la mission</button>
-      </article>
-      <article class="task">
-        <h3 id="task2">Lire les consignes</h3>
-        <p id="desc2">Apprenez comment fonctionnent les missions.</p>
-        <p class="green" id="reward2">Récompense : démo</p>
-        <button onclick="demoMessage()" id="start2">Voir la mission</button>
-      </article>
+<section class="section panel" id="revenueSection">
+  <div class="sectionhead">
+    <div>
+      <div class="eyebrow" data-i18n="revenueEyebrow">Suivi des gains</div>
+      <h2 data-i18n="revenueTitle">Revenus par niveau VIP</h2>
+      <p class="muted" data-i18n="revenueIntro">Cette vue affiche les revenus issus des missions réellement terminées et validées. Les montants sont à 0 Ar dans cette démo.</p>
     </div>
-  </section>
+  </div>
+  <div class="notice" style="margin-bottom:14px" data-i18n="revenueNotice">Aucun revenu fixe n’est promis. Les totaux mensuels et annuels sont des calculs indicatifs à partir du montant journalier saisi, pas une prévision ni une garantie de paiement.</div>
+  <div class="formgrid" style="max-width:420px;margin-bottom:16px">
+    <div>
+      <label class="label" for="dailyIncome" data-i18n="dailyIncomeLabel">Gains nets validés par jour (Ar) — exemple de calcul</label>
+      <input class="field" id="dailyIncome" type="number" min="0" step="1" value="0">
+    </div>
+    <button class="btn" type="button" id="calculateRevenue" data-i18n="calculate">Calculer les estimations</button>
+  </div>
+  <div style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse;min-width:520px">
+      <thead><tr>
+        <th style="text-align:left;padding:11px;border-bottom:1px solid var(--line)" data-i18n="tableVip">Niveau</th>
+        <th style="text-align:right;padding:11px;border-bottom:1px solid var(--line)" data-i18n="daily">Par jour</th>
+        <th style="text-align:right;padding:11px;border-bottom:1px solid var(--line)" data-i18n="monthly">Par mois (30 j)</th>
+        <th style="text-align:right;padding:11px;border-bottom:1px solid var(--line)" data-i18n="yearly">Par an (365 j)</th>
+      </tr></thead>
+      <tbody id="revenueRows"></tbody>
+    </table>
+  </div>
+  <p class="small" style="margin-top:12px" data-i18n="revenueFormula">Calcul illustratif : montant journalier × 30 ou × 365. Les vrais gains dépendent des missions disponibles, effectuées et validées.</p>
+</section>
 
-  <section class="card">
-    <h2 id="aboutTitle">À propos de MoneyMany</h2>
-    <p id="aboutText">MoneyMany est en cours de création. Les missions et les paiements réels ne sont pas encore activés.</p>
-  </section>
+<section class="section two">
+ <div class="panel" id="depositSection"><h2 data-i18n="depositTitle">Déclarer un dépôt</h2><p class="muted" data-i18n="depositIntro">Effectuez le transfert dans votre application Mobile Money, puis saisissez la référence pour demander une vérification.</p>
+  <div class="payrow"><div><strong>MVola</strong><span class="number">034 79 482 75</span><div class="small">Roberto Carlos</div></div><button class="btn copy" data-number="0347948275" data-i18n="copy">Copier</button></div>
+  <div class="payrow"><div><strong>Orange Money</strong><span class="number">032 22 526 80</span><div class="small">Roberto Carlos</div></div><button class="btn copy" data-number="0322252680" data-i18n="copy">Copier</button></div>
+  <form id="depositForm" class="formgrid">
+   <div><label class="label" for="provider" data-i18n="provider">Opérateur</label><select id="provider"><option>MVola</option><option>Orange Money</option></select></div>
+   <div><label class="label" for="amount" data-i18n="amount">Montant envoyé (Ar)</label><input class="field" id="amount" type="number" min="5000" step="1" placeholder="5000" required></div>
+   <div><label class="label" for="reference" data-i18n="reference">Référence de transaction</label><input class="field" id="reference" maxlength="100" required data-placeholder="referencePlaceholder" placeholder="Saisir la référence fournie par l’opérateur"></div>
+   <button class="btn primary" type="submit" data-i18n="submitDeposit">Envoyer la demande de vérification</button>
+  </form><div class="status" id="depositStatus" role="status"></div>
+ </div>
+ <div class="panel"><h2 data-i18n="activateTitle">Demander l’activation VIP</h2><p class="muted" data-i18n="activateIntro">Après vérification du dépôt, un administrateur pourra confirmer l’accès. Cette maquette ne peut pas activer de VIP automatiquement.</p>
+  <form id="vipForm" class="formgrid">
+   <div><label class="label" for="vipChoice" data-i18n="chooseVip">Niveau demandé</label><select id="vipChoice"></select></div>
+   <div><label class="label" for="memberName" data-i18n="memberName">Nom ou identifiant membre</label><input class="field" id="memberName" maxlength="80" required placeholder="Ex. Membre123"></div>
+   <div><label class="label" for="txRef" data-i18n="txRef">Référence de transaction (si déjà payée)</label><input class="field" id="txRef" maxlength="100" placeholder="Référence, si disponible"></div>
+   <button class="btn primary" type="submit" data-i18n="requestVip">Envoyer la demande</button>
+  </form><div class="status" id="vipStatus" role="status"></div>
+  <div class="notice" style="margin-top:16px" data-i18n="securityNotice">Ne partagez jamais votre code PIN ni un code secret Mobile Money. Une référence saisie ne prouve pas à elle seule qu’un paiement a été reçu.</div>
+ </div>
+</section>
+<section class="section panel" id="missionSection"><div class="sectionhead"><div><h2 data-i18n="missionTitle">Missions et activités</h2><p class="muted" data-i18n="missionIntro">Exemples d’activités. Aucune rémunération n’est promise ni créditée par cette maquette.</p></div></div>
+ <div class="mission"><div><h3 data-i18n="mission1">Compléter son profil</h3><div class="small" data-i18n="mission1d">Ajouter les informations nécessaires au compte</div></div><span class="pill" data-i18n="demoOnly">Exemple</span></div>
+ <div class="mission"><div><h3 data-i18n="mission2">Découvrir les consignes</h3><div class="small" data-i18n="mission2d">Lire les règles et apprendre à soumettre un travail</div></div><span class="pill" data-i18n="demoOnly">Exemple</span></div>
+ <div class="mission"><div><h3 data-i18n="mission3">Inviter un ami</h3><div class="small" data-i18n="mission3d">Partager la plateforme sans obligation de dépôt pour les invités</div></div><span class="pill" data-i18n="noReward">Pas de prime configurée</span></div>
+</section>
+<section class="section notice" data-i18n="legalNotice">Version de démonstration : les demandes ne sont pas transmises à un serveur, les soldes ne sont pas réels et aucun paiement n’est vérifié automatiquement. Avant un lancement réel, ajoutez une authentification sécurisée, une base de données, une vérification des transactions, une politique de confidentialité et des conditions conformes aux règles applicables.</section>
+<footer class="footer">© 2026 MoneyMany · <span data-i18n="footerText">Démo bilingue MG / FR</span></footer>
 </main>
-
-<footer>
-  <p>© 2026 MoneyMany</p>
-  <p class="note" id="footerNote">Version initiale bilingue — démonstration uniquement.</p>
-</footer>
-
 <script>
-const translations = {
-  fr: {
-    welcome:"Gagnez en réalisant des micro-tâches !",
-    intro:"Une plateforme simple pour découvrir des missions en ligne.",
-    explore:"Découvrir les missions", balanceTitle:"Mon portefeuille",
-    balanceNote:"Solde de démonstration : aucun paiement réel n'est effectué.",
-    tasksTitle:"Missions disponibles", task1:"Découvrir la plateforme",
-    desc1:"Consultez les informations de MoneyMany.",
-    reward1:"Récompense : démo", task2:"Lire les consignes",
-    desc2:"Apprenez comment fonctionnent les missions.",
-    reward2:"Récompense : démo", start1:"Voir la mission",
-    start2:"Voir la mission", aboutTitle:"À propos de MoneyMany",
-    aboutText:"MoneyMany est en cours de création. Les missions et les paiements réels ne sont pas encore activés.",
-    footerNote:"Version initiale bilingue — démonstration uniquement.",
-    message:"Cette mission est un exemple. Les missions rémunérées ne sont pas encore activées."
-  },
-  mg: {
-    welcome:"Mahazoa valisoa amin'ny asa madinika an-tserasera!",
-    intro:"Sehatra tsotra hahitana asa azo atao amin'ny Internet.",
-    explore:"Hijery ny asa", balanceTitle:"Ny volako",
-    balanceNote:"Vola andrana ihany ity. Tsy misy fandoavam-bola tena izy.",
-    tasksTitle:"Asa azo jerena", task1:"Hijery ny sehatra",
-    desc1:"Jereo ny mombamomba ny MoneyMany.",
-    reward1:"Valisoa: andrana", task2:"Hamaky toromarika",
-    desc2:"Ianaro ny fomba fiasan'ny asa.",
-    reward2:"Valisoa: andrana", start1:"Hijery ny asa",
-    start2:"Hijery ny asa", aboutTitle:"Momba ny MoneyMany",
-    aboutText:"Mbola amboarina ny MoneyMany. Tsy mbola mandeha ny asa misy karama sy ny fandoavam-bola tena izy.",
-    footerNote:"Dika voalohany amin'ny teny roa — andrana ihany.",
-    message:"Ohatra ihany ity asa ity. Tsy mbola mandeha ny asa misy karama."
-  }
+const tiers=[
+[1,5000,"Missions de base","Asa fototra"],[2,10000,"Plus de missions","Asa fanampiny"],[3,20000,"Missions variées","Asa isan-karazany"],[4,35000,"Accès élargi","Fidirana mivelatra"],[5,50000,"Missions avancées","Asa avo lenta"],[6,75000,"Priorité sur certaines missions","Laharam-pahamehana amin’ny asa sasany"],[7,100000,"Catalogue élargi","Safidy asa maro kokoa"],[8,150000,"Missions spécialisées","Asa manokana"],[9,200000,"Accès premium","Fidirana premium"],[10,300000,"Fonctionnalités VIP disponibles","Fampiasa VIP misy"]
+];
+const dict={
+fr:{eyebrow:"Plateforme de missions",heroTitle:"Des missions utiles. Une expérience plus simple.",heroText:"Explorez les missions disponibles, suivez votre activité et découvrez les options d’accès VIP de MoneyMany.",browse:"Explorer les missions",walletLabel:"Portefeuille de démonstration",walletHint:"Aucun dépôt ni revenu réel n’est enregistré sur cette version.",currentVip:"Niveau actuel",noVip:"Aucun VIP activé",depositBtn:"Instructions de dépôt",statVip:"Niveaux VIP proposés",statLang:"Deux langues disponibles",demoStatus:"Démo",statStatus:"Paiements non connectés",memberArea:"Espace membre",vipTitle:"Choisissez votre niveau VIP",vipIntro:"Chaque niveau donne accès à des fonctionnalités et à des catégories de missions supplémentaires.",vipDisclaimer:"Tarifs proposés à titre de maquette. Vérifiez les avantages réels, les conditions et les obligations légales avant de facturer un accès.",depositTitle:"Déclarer un dépôt",depositIntro:"Effectuez le transfert dans votre application Mobile Money, puis saisissez la référence pour demander une vérification.",copy:"Copier",provider:"Opérateur",amount:"Montant envoyé (Ar)",reference:"Référence de transaction",referencePlaceholder:"Saisir la référence fournie par l’opérateur",submitDeposit:"Envoyer la demande de vérification",activateTitle:"Demander l’activation VIP",activateIntro:"Après vérification du dépôt, un administrateur pourra confirmer l’accès. Cette maquette ne peut pas activer de VIP automatiquement.",chooseVip:"Niveau demandé",memberName:"Nom ou identifiant membre",txRef:"Référence de transaction (si déjà payée)",requestVip:"Envoyer la demande",securityNotice:"Ne partagez jamais votre code PIN ni un code secret Mobile Money. Une référence saisie ne prouve pas à elle seule qu’un paiement a été reçu.",missionTitle:"Missions et activités",missionIntro:"Exemples d’activités. Aucune rémunération n’est promise ni créditée par cette maquette.",mission1:"Compléter son profil",mission1d:"Ajouter les informations nécessaires au compte",mission2:"Découvrir les consignes",mission2d:"Lire les règles et apprendre à soumettre un travail",mission3:"Inviter un ami",mission3d:"Partager la plateforme sans obligation de dépôt pour les invités",demoOnly:"Exemple",noReward:"Pas de prime configurée",legalNotice:"Version de démonstration : les demandes ne sont pas transmises à un serveur, les soldes ne sont pas réels et aucun paiement n’est vérifié automatiquement. Avant un lancement réel, ajoutez une authentification sécurisée, une base de données, une vérification des transactions, une politique de confidentialité et des conditions conformes aux règles applicables.",footerText:"Démo bilingue MG / FR",revenueEyebrow:"Suivi des gains",revenueTitle:"Revenus par niveau VIP",revenueIntro:"Cette vue affiche les revenus issus des missions réellement terminées et validées. Les montants sont à 0 Ar dans cette démo.",revenueNotice:"Aucun revenu fixe n’est promis. Les totaux mensuels et annuels sont des calculs indicatifs à partir du montant journalier saisi, pas une prévision ni une garantie de paiement.",dailyIncomeLabel:"Gains nets validés par jour (Ar) — exemple de calcul",calculate:"Calculer les estimations",tableVip:"Niveau",daily:"Par jour",monthly:"Par mois (30 j)",yearly:"Par an (365 j)",revenueFormula:"Calcul illustratif : montant journalier × 30 ou × 365. Les vrais gains dépendent des missions disponibles, effectuées et validées.",tier:"VIP",access:"Avantage proposé",requestTier:"Demander ce niveau",minDeposit:"Accès proposé",depositMin:"Le montant minimum de dépôt indiqué est de 5 000 Ar.",depositDemo:"Demande de démonstration enregistrée uniquement sur cette page. Aucun portefeuille n’a été crédité. Contactez l’administrateur pour une vérification réelle.",vipDemo:"Demande VIP de démonstration enregistrée uniquement sur cette page. Aucun accès n’a été activé automatiquement.",copied:"Numéro copié si votre navigateur autorise le presse-papiers.",copyFail:"Copiez manuellement le numéro affiché.",price:"Tarif proposé"},
+mg:{eyebrow:"Sehatra asa",heroTitle:"Asa mahasoa. Fampiasana mora kokoa.",heroText:"Jereo ny asa misy, araho ny hetsikao ary fantaro ny safidy fidirana VIP ao amin’ny MoneyMany.",browse:"Hijery ny asa",walletLabel:"Kitapom-bola andrana",walletHint:"Tsy misy petra-bola na vola tena izy voatahiry amin’ity dika ity.",currentVip:"Haavo ankehitriny",noVip:"Tsy mbola misy VIP",depositBtn:"Toromarika momba ny petra-bola",statVip:"Haavo VIP atolotra",statLang:"Fiteny roa",demoStatus:"Andrana",statStatus:"Tsy mbola mifandray ny fandoavam-bola",memberArea:"Toeran’ny mpikambana",vipTitle:"Safidio ny haavo VIP",vipIntro:"Ny haavo tsirairay dia manome fidirana amin’ny fampiasa sy sokajin’asa fanampiny.",vipDisclaimer:"Vidiny natolotra ho ohatra. Hamarino ny tombontsoa, ny fepetra ary ny lalàna alohan’ny handraisana vola.",depositTitle:"Mampandre petra-bola",depositIntro:"Alefaso amin’ny Mobile Money aloha ny vola, dia ampidiro ny laharan’ny fifanakalozana mba hangataka fanamarinana.",copy:"Adika",provider:"Mpandraharaha",amount:"Vola nalefa (Ar)",reference:"Laharan’ny fifanakalozana",referencePlaceholder:"Ampidiro ny laharana nomen’ny mpandraharaha",submitDeposit:"Alefaso ny fangatahana fanamarinana",activateTitle:"Mangataka fampandehanana VIP",activateIntro:"Rehefa voamarina ny petra-bola dia afaka manamarina ny fidirana ny mpitantana. Tsy afaka mampandeha VIP ho azy ity dika andrana ity.",chooseVip:"Haavo angatahina",memberName:"Anarana na kaody mpikambana",txRef:"Laharan’ny fifanakalozana (raha efa nandoa)",requestVip:"Alefaso ny fangatahana",securityNotice:"Aza zaraina mihitsy ny PIN na kaody miafina Mobile Money. Tsy porofo ampy fa voaray ny vola ny laharana nampidirina fotsiny.",missionTitle:"Asa sy hetsika",missionIntro:"Ohatra ihany ireo asa ireo. Tsy misy karama ampanantenaina na ampidirina amin’ity dika ity.",mission1:"Fenoy ny mombamomba anao",mission1d:"Ampidiro ny vaovao ilaina amin’ny kaonty",mission2:"Vakio ny toromarika",mission2d:"Vakio ny fitsipika ary ianaro ny fandefasana asa",mission3:"Manasa namana",mission3d:"Mizara ny sehatra nefa tsy voatery hametraka vola ny nasaina",demoOnly:"Ohatra",noReward:"Tsy misy valisoa voafaritra",legalNotice:"Dika andrana: tsy alefa any amin’ny mpizara ny fangatahana, tsy tena vola ny ambiny ary tsy misy fandoavam-bola voamarina ho azy. Alohan’ny hampiasana tena izy dia ampio fidirana azo antoka, tahiry angona, fanamarinana fifanakalozana, politika momba ny tsiambaratelo ary fepetra manaraka ny lalàna.",footerText:"Dika andrana MG / FR",revenueEyebrow:"Fanaraha-maso ny vola azo",revenueTitle:"Vola azo isaky ny haavo VIP",revenueIntro:"Ity tabilao ity dia natao hanehoana ny vola azo avy amin’ny asa vita sy voamarina. 0 Ar ny sanda amin’ity dika andrana ity.",revenueNotice:"Tsy misy vola raikitra azo antoka. Kajy fanazavana avy amin’ny vola isan’andro ampidirina ny totaly isam-bolana sy isan-taona, fa tsy vinavina na antoka handoavana vola.",dailyIncomeLabel:"Vola azo voamarina isan’andro (Ar) — ohatra kajy",calculate:"Kajio ny tombana",tableVip:"Haavo",daily:"Isan’andro",monthly:"Isam-bolana (30 andro)",yearly:"Isan-taona (365 andro)",revenueFormula:"Kajy fanazavana: vola isan’andro × 30 na × 365. Miankina amin’ny asa misy, vita ary voamarina ny tena vola azo.",tier:"VIP",access:"Tombontsoa atolotra",requestTier:"Hangataka ity haavo ity",minDeposit:"Fidirana atolotra",depositMin:"5 000 Ar ny petra-bola farany ambany voalaza.",depositDemo:"Voatahiry eto amin’ity pejy ity ihany ny fangatahana andrana. Tsy nampiana vola ny kitapom-bola. Mifandraisa amin’ny mpitantana mba hanamarinana tena izy.",vipDemo:"Voatahiry eto amin’ity pejy ity ihany ny fangatahana VIP andrana. Tsy nisy fidirana nampandeha ho azy.",copied:"Voadika ny laharana raha avelan’ny navigateur ny clipboard.",copyFail:"Adikao tanana ilay laharana aseho.",price:"Vidiny atolotra"}
 };
+function currentLang(){return document.getElementById('lang').value}
+function renderTiers(){const l=currentLang(),d=dict[l];document.getElementById('vipGrid').innerHTML=tiers.map(t=>`<article class="vip ${t[0]===1?'featured':''}"><span class="tag">${d.tier} ${t[0]}</span><div class="price">${t[1].toLocaleString('fr-FR')} Ar</div><div class="small">${d.price}</div><ul><li>${l==='fr'?t[2]:t[3]}</li><li>${l==='fr'?'Accès selon les missions réellement disponibles':'Araka ny asa tena misy'}</li></ul><button class="btn ${t[0]===1?'primary':''}" onclick="chooseTier(${t[0]})">${d.requestTier}</button></article>`).join('');document.getElementById('vipChoice').innerHTML=tiers.map(t=>`<option value="${t[0]}">VIP ${t[0]} — ${t[1].toLocaleString('fr-FR')} Ar</option>`).join('')}
+function applyLanguage(){const l=currentLang(),d=dict[l];document.documentElement.lang=l;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(d[k])el.textContent=d[k]});document.querySelectorAll('[data-placeholder]').forEach(el=>{const k=el.dataset.placeholder;if(d[k])el.placeholder=d[k]});document.getElementById('navVip').textContent=l==='fr'?'Découvrir VIP':'Hijery VIP';renderTiers()}
+function chooseTier(n){document.getElementById('vipChoice').value=String(n);document.getElementById('activateTitle').scrollIntoView({behavior:'smooth',block:'start'})}
+document.getElementById('lang').addEventListener('change',applyLanguage);
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{const d=dict[currentLang()];try{await navigator.clipboard.writeText(b.dataset.number);alert(d.copied)}catch(e){alert(d.copyFail+' '+b.dataset.number)}}));
+document.getElementById('depositForm').addEventListener('submit',e=>{e.preventDefault();const d=dict[currentLang()],amount=Number(document.getElementById('amount').value),ref=document.getElementById('reference').value.trim(),box=document.getElementById('depositStatus');box.style.display='block';if(amount<5000){box.textContent=d.depositMin;return}if(!ref){box.textContent=d.referencePlaceholder;return}box.textContent=d.depositDemo+' ('+document.getElementById('provider').value+', '+amount.toLocaleString('fr-FR')+' Ar).';});
+document.getElementById('vipForm').addEventListener('submit',e=>{e.preventDefault();const box=document.getElementById('vipStatus');box.style.display='block';box.textContent=dict[currentLang()].vipDemo+' ('+document.getElementById('vipChoice').value+').';});
+applyLanguage();
 
-function changeLanguage() {
-  const lang = document.getElementById("language").value;
-  document.documentElement.lang = lang;
-  for (const id in translations[lang]) {
-    if (id !== "message") {
-      document.getElementById(id).textContent = translations[lang][id];
-    }
-  }
+function renderRevenue(){
+ const l=currentLang(),d=dict[l],daily=Math.max(0,Number(document.getElementById('dailyIncome').value)||0);
+ document.getElementById('revenueRows').innerHTML=tiers.map(t=>`<tr>
+ <td style="padding:11px;border-bottom:1px solid var(--line);font-weight:750">VIP ${t[0]}</td>
+ <td style="padding:11px;text-align:right;border-bottom:1px solid var(--line)">${daily.toLocaleString('fr-FR')} Ar</td>
+ <td style="padding:11px;text-align:right;border-bottom:1px solid var(--line)">${(daily*30).toLocaleString('fr-FR')} Ar</td>
+ <td style="padding:11px;text-align:right;border-bottom:1px solid var(--line)">${(daily*365).toLocaleString('fr-FR')} Ar</td>
+ </tr>`).join('');
 }
-function showTasks() {
-  document.getElementById("tasksTitle").scrollIntoView({behavior:"smooth"});
-}
-function demoMessage() {
-  alert(translations[document.getElementById("language").value].message);
-}
+document.getElementById('calculateRevenue').addEventListener('click',renderRevenue);
+document.getElementById('dailyIncome').addEventListener('input',renderRevenue);
+
+renderRevenue();
 </script>
 </body>
 </html>
+lock';box.textContent=dict[currentLang()].vipDemo+' ('+document.getElementById('vipChoice').value+').';});
+applyLanguage();
+
+function renderRevenue(){
+ const l=currentLang(),d=dict[l],daily=Math.max(0,Number(document.getElementById('dailyIncome').value)||0);
+ document.getElementById('revenueRows').innerHTML=tiers.map(t=>`<tr>
+ <td style="padding:11px;border-bottom:1px solid var(--line);font-weight:750">VIP ${t[0]}</td>
+ <td style="padding:11px;text-align:right;border-bottom:1px solid v
